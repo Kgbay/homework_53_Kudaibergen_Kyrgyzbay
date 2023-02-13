@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Task create</title>
 </head>
 <body>
     <h1>Title</h1>
     <form action="/task/add" method="post">
+
         {% csrf_token %}
 
         <div>
@@ -17,11 +20,23 @@
         <div>
             <label for="status">Status</label>
             <input type="text" id="status" name="status">
+<!--
+                    <select name="select">-->
+<!--                <option>Выберите статус</option>-->
+<!--                <option value="new">Новая</option>-->
+<!--                <option value="in-process">В процессе</option>-->
+<!--                <option value="done">Сделано</option>-->
+<!--            </select>-->
         </div>
 
         <div>
-            <label for="status">Date</label>
-            <input type="date" id="date" name="status">
+            <label for="date">Date</label>
+            <input type="text" id="date" name="date">
+        </div>
+
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
         </div>
 
         <div>

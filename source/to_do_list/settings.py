@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'to_do_list.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "to_do_list_db",
+        'NAME': "task_app_db",
         "USER": "postgres",
         "PASSWORD": "kuka2305",
         "HOST": 'localhost',
