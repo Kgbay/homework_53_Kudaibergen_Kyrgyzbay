@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-     <h1>Task page</h1>
-     <a href="/">На главную</a>
-     <p>Desc: {{ task.desc }}</p>
-     <p>Desc: {{ task.status }}</p>
-     <p>Desc: {{ task.author }}</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+     <div class="container">
+          <h1>Подробнее о задании # {{ task.id }}</h1>
+          <p>Описание: {{ task.desc }}</p>
+          <p>Статус: {{ task.status }}</p>
+          <p>Автор: {{ task.author }}</p>
+          <p>Срок выполнения: {{ task.date }}</p>
+     </div>
+{% endblock content %}
