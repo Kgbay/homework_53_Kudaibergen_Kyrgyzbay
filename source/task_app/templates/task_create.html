@@ -1,39 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <h1>Добавления задач</h1>
-        <form action="/task/add" method="post">
+        <h1>Добавления задачи</h1>
+            <form action="/task/add" method="post">
 
-            {% csrf_token %}
+                <div class="form-comp">
+                    <label for="desc">Описание</label>
+                    <input type="text" id="desc" name="desc" required class="form-control form-control-lg">
+                </div>
 
-            <div>
-                <label for="desc">Desc</label>
-                <input type="text" id="desc" name="desc" required class="form-control form-control-lg">
-            </div>
-            <div class="form-floating">
-                <select name="status" class="form-select">
-                    <option value="">Выберите статус</option>
-                    <option value="new">Новый</option>
-                    <option value="in process">В процессе</option>
-                    <option value="done">Сделано</option>
-                </select>
-            </div>
+                <div class="form-comp">
+                    <select name="status">
+                        <option value="">Выберите статус</option>
+                        <option value="new">Новый</option>
+                        <option value="in process">В процессе</option>
+                        <option value="done">Сделано</option>
+                    </select>
+                </div>
 
-            <div>
-                <label for="date">Date</label>
-                <input type="text" id="date" name="date" required placeholder="{{ task.date }}" class="form-control form-control-lg">
-            </div>
+                <div class="form-comp">
+                    <label for="date">Дата</label>
+                    <input type="text" id="date" name="date" required placeholder="{{ task.date }}" class="form-control form-control-lg">
+                </div>
 
-            <div>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" required class="form-control form-control-lg">
-            </div>
+                <div class="form-comp">
+                    <label for="author">Автор</label>
+                    <input type="text" id="author" name="author" required class="form-control form-control-lg">
+                </div>
 
-            <div>
-                <input type="submit">
-            </div>
+                <div class="form-comp">
+                    <input type="submit" class="btn btn-primary" value="Отправить">
+                </div>
 
-        </form>
+            </form>
     </div>
 
 {% endblock content %}
