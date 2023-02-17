@@ -1,6 +1,7 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 
 from task_app.models import Task
 
@@ -15,14 +16,11 @@ def add_view(request: WSGIRequest):
         'author': request.POST.get('author')
     }
     task = Task.objects.create(**task_data)
-    return redirect(f'/task/{task.pk}')
+    return redirect(reverse('detail_view', kwargs={'pk': task.pk}))
 
 
 def detail_view(request, pk):
-    try:
-        task = Task.objects.get(pk=pk)
-    except Task.DoesNotExist:
-        return HttpResponseNotFound("Not Found")
+    task = get_object_or_404(Task, pk=pk)
     return render(request, 'task.html', context={
         'task': task
     })
