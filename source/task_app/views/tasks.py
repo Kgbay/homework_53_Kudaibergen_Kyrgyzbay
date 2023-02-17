@@ -27,9 +27,9 @@ def detail_view(request, pk):
 
 
 
-def remove_view(request):
+def remove_view(request, pk):
     task_pk = request.GET.get('pk')
-    task = Task.objects.get(pk=task_pk)
+    task = Task.objects.get(pk=pk)
     context = {'task': task}
     removal = task.delete()
     return render(request, 'remove.html', context=context)
