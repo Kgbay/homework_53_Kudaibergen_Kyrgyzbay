@@ -3,7 +3,7 @@
     <div class="container">
         <h1>Добавления задачи</h1>
             <form action="/task/add" method="post">
-
+                {% csrf_token %}
                 <div class="form-comp">
                     <label for="desc">Описание</label>
                     <input type="text" id="desc" name="desc" required class="form-control form-control-lg">
