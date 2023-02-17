@@ -6,5 +6,6 @@
           <p>Статус: {{ task.status }}</p>
           <p>Автор: {{ task.author }}</p>
           <p>Срок выполнения: {{ task.date }}</p>
+          <a href="{% url 'index' %}" class="btn btn-primary">Назад</a>
      </div>
 {% endblock content %}
