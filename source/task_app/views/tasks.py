@@ -1,4 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 
 from task_app.models import Task
@@ -14,13 +15,18 @@ def add_view(request: WSGIRequest):
         'author': request.POST.get('author')
     }
     task = Task.objects.create(**task_data)
-    return redirect(f'/task/?pk={task.pk}')
+    return redirect(f'/task/{task.pk}')
 
 
 def detail_view(request, pk):
-    task = Task.objects.get(pk=pk)
-    context = {'task': task}
-    return render(request, 'task.html', context=context)
+    try:
+        task = Task.objects.get(pk=pk)
+    except Task.DoesNotExist:
+        return HttpResponseNotFound("Not Found")
+    return render(request, 'task.html', context={
+        'task': task
+    })
+
 
 
 def remove_view(request):
