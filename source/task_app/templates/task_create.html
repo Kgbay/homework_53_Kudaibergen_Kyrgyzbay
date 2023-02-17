@@ -1,31 +1,37 @@
 {% extends "base.html" %}
+{% block title %}Task create{% endblock %}
 {% block content %}
     <div class="container">
         <h1>Добавления задачи</h1>
             <form action="{% url 'task_add' %}" method="post">
                 {% csrf_token %}
                 <div class="form-comp">
-                    <label for="desc">Описание</label>
-                    <input type="text" id="desc" name="desc" required class="form-control form-control-lg">
+                    <label for="title">Заголовок</label>
+                    <input type="text" id="title" name="title" required class="form-control form-control-lg">
                 </div>
 
                 <div class="form-comp">
-                    <select name="status">
-                        <option value="">Выберите статус</option>
-                        <option value="new">Новый</option>
-                        <option value="in process">В процессе</option>
-                        <option value="done">Сделано</option>
+                    <label for="status">Статус</label>
+                    <select id="status" name="status" class="form-control form-control-lg">
+                        {% for choice in choices %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
                 <div class="form-comp">
-                    <label for="date">Дата</label>
-                    <input type="text" id="date" name="date" required placeholder="{{ task.date }}" class="form-control form-control-lg">
+                    <label for="custom_date">Дата</label>
+                    <input type="date" id="custom_date" name="custom_date" class="form-control form-control-lg">
                 </div>
 
                 <div class="form-comp">
                     <label for="author">Автор</label>
                     <input type="text" id="author" name="author" required class="form-control form-control-lg">
+                </div>
+
+                <div class="form-comp">
+                    <label for="full_desc">Полное описание</label>
+                    <textarea id="full_desc" name="full_desc" required class="form-control form-control-lg"></textarea>
                 </div>
 
                 <div class="form-comp">
