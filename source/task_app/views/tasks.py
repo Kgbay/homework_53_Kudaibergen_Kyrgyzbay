@@ -16,7 +16,7 @@ def add_view(request: WSGIRequest):
         'author': request.POST.get('author')
     }
     task = Task.objects.create(**task_data)
-    return redirect(reverse('detail_view', kwargs={'pk': task.pk}))
+    return redirect('detail_view', pk = task.pk)
 
 
 def detail_view(request, pk):

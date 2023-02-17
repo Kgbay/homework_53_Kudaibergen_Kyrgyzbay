@@ -14,8 +14,8 @@
         <nav class="navbar navbar-expand-md bg-body-tertiary">
           <div class="container-fluid">
               <div class="navbar-nav">
-                <a href="/" class="btn btn-outline-primary">На главную</a>
-                <a href="task/add" class="btn btn-outline-primary">Добавить задачу</a>
+                <a href="{% url 'index' %}" class="btn btn-outline-primary">На главную</a>
+                <a href="{% url 'task_add' %}" class="btn btn-outline-primary">Добавить задачу</a>
               </div>
           </div>
         </nav>
